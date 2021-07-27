@@ -1,5 +1,7 @@
 package july27;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,12 +16,20 @@ public class GoogleJava {
 		demo.get("https://www.google.com/");
 		Thread.sleep(2000);
 		demo.findElement(By.xpath("//input[@name='q']")).sendKeys("java");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
+		List<WebElement> se = demo.findElements(By.xpath("//ul[@role='listbox']/li"));
 		Actions ac=new Actions(demo);
-		WebElement java = demo.findElement(By.xpath("//span[text()='java']/b[.='script']"));
-	    ac.moveToElement(java).build().perform(); 
-	    Thread.sleep(2000);
-	    java.click();
+		for (WebElement sea : se) {
+			System.out.println(sea.getText());
+			ac.moveToElement(sea).build().perform();
+			Thread.sleep(1000);
+			
+		}
+		Thread.sleep(2000);
+		
+	 demo.findElement(By.xpath("//span[text()='java']/b[.='script']")).click();
+	    
+	    demo.close();
 	
 	}
 }
