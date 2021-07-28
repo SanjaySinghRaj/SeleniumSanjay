@@ -18,9 +18,10 @@ public class Demodroppable {
 		Thread.sleep(2000);
 		WebElement elem = demo.findElement(By.xpath("//div[@id='draggable']"));
 		WebElement elem2 = demo.findElement(By.xpath("//div[@id='droppable']"));
+		System.out.println(elem2.getCssValue("background-color"));
 		Actions ac = new Actions(demo);
 		ac.dragAndDrop(elem, elem2).perform();
-	
+		System.out.println(elem2.getCssValue("background-color"));
 		System.out.println(elem2.getText());
 
 	}
