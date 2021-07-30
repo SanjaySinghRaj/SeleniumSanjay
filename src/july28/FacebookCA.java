@@ -1,6 +1,7 @@
 package july28;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +19,8 @@ public class FacebookCA {
 		 WebElement face = demo.findElement(By.xpath("//input[@value='2']"));
 		 face.click();
 		 System.out.println(face.getAttribute("name"));
+		 Point loc = face.getLocation();
+		 System.out.println("Location of X "+loc.getX()+"  "+"Location of Y "+loc.getY());
 		 Thread.sleep(2000);
 		 System.out.println(face.isSelected());
 		 demo.close();

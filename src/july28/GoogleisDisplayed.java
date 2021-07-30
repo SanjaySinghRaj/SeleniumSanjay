@@ -17,7 +17,10 @@ public class GoogleisDisplayed {
 		Thread.sleep(1000);
 		System.out.println(goog.isDisplayed());
 		System.out.println(goog.isEnabled());
-		goog.sendKeys("hello",Keys.ENTER);
+		goog.sendKeys("hello");
+		Thread.sleep(2000);
+		goog.clear();
+		goog.sendKeys("I love Testing");
 
 }
 }
