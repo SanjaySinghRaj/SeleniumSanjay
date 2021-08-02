@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Submit Button Counts Down to Enabled</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
+<form action =''>
+<p>
+<input type='button' id='sBtn' value='Do something' style='width:10em'>
+<input type='button' id='otherBtn' value='Do something else' style='width:10em'>
+</form>
+<script type='text/javascript'>
+function timedButtonEnable( id, secs, eText)
+{
+var btn = document.getElementById( id ),period, left = secs;
+btn.disabled = true;
+btn.value = secs;
+period = setInterval( function()
+{
+btn.value = --left;
+if( !left )
+{
+btn.disabled = false;
+btn.value = eText;
+clearInterval( period );
+}
+},997 );
+if( !btn.timeSetupOK )
+{
+btn.timerSetupOk = true;
+btn.onmouseup = function(){ timedButtonEnable( id, secs, eText)};
+}
+}
+timedButtonEnable( 'sBtn', 5, 'SEND NOW');
+timedButtonEnable( 'otherBtn', 3, 'Do something else');
+</script>
+</body>
+</html>
