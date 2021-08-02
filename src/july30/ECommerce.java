@@ -1,5 +1,7 @@
 package july30;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,25 +15,24 @@ public class ECommerce {
 		WebDriver auto = new ChromeDriver();
 		auto.manage().window().maximize();
 		auto.get("http://automationpractice.com/index.php");
-		Thread.sleep(2000);
+		auto.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		auto.findElement(By.xpath("//div[@id='block_top_menu']/ul/li/a[text()='T-shirts']")).click();
-		Thread.sleep(1500);
 		Actions ac=new Actions(auto);
 		WebElement vi = auto.findElement(By.xpath("//ul[@class='product_list grid row']/li"));
 		ac.moveToElement(vi).build().perform();
-		Thread.sleep(1500);
+		
 		auto.findElement(By.xpath("//span[.='Add to cart']")).click();
-		Thread.sleep(2000);
+		
 		auto.findElement(By.xpath("//span[@title='Close window']")).click();
-		Thread.sleep(1500);
+		
 		WebElement sc = auto.findElement(By.xpath("//a[@title='View my shopping cart']"));
 		ac.moveToElement(sc).build().perform();
-		Thread.sleep(1500);
+		
 		WebElement prod = auto.findElement(By.xpath("//dl[@class='products']/dt"));
 		System.out.println(prod.getText());
 		WebElement pris = auto.findElement(By.xpath("//span[@class='price cart_block_total ajax_block_cart_total']"));
 		System.out.println(pris.getText());
-		Thread.sleep(1500);
+		
 		auto.close();
 
 	}
