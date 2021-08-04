@@ -19,6 +19,7 @@ public class FacebookCA {
 		 WebElement face = demo.findElement(By.xpath("//input[@value='2']"));
 		 face.click();
 		 System.out.println(face.getAttribute("name"));
+		 System.out.println(face.getCssValue("color"));
 		 Point loc = face.getLocation();
 		 System.out.println("Location of X "+loc.getX()+"  "+"Location of Y "+loc.getY());
 		 Thread.sleep(2000);
