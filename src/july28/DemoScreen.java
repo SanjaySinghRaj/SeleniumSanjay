@@ -13,10 +13,10 @@ import com.google.common.io.Files;
 
 public class DemoScreen {
 	
-	public static void demoScreenS(Object driver ,String name) throws IOException {
+	public static void takeSnap(Object driver ,String name) throws IOException {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File ss = ts.getScreenshotAs(OutputType.FILE);
-		File sss = new File("./ScreenShot/name.png");
+		File sss = new File("./ScreenShot/"+name+ ".png");
 		Files.copy(ss, sss);
 	}
 
@@ -26,7 +26,7 @@ public class DemoScreen {
 		googl.manage().window().maximize();
 		googl.get("https://www.google.com/"); 
 		googl.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		demoScreenS(googl,"hello");
+		takeSnap(googl,"hello");
 
 	}
 
